@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
     <title>My First HTML Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 </head>
+
 <body>
-    <h1>1. Introduction to HTML. (Level 1)</h1>
-    <h2>1.1 Creating Paragraphs (Level 2)</h2>
-    <p> Unit: FIT3179 Data visualization. </p>
-    <p> This is a paragraph about paragraphs. </p>
-
-    <h2> 1.2 Creating Tables (Level 2)</h2>
-    <h3> 1.2.1 Table Rows (Level 3)</h3>
-    <p> This is a third paragraph about table rows</p>
+    <div id="symbol_map"></div>
     
-    <h3> 1.2.2 Table Columns (Level 3)</h3>
-    <p> This is a paragraph about table columns.</p>
+    <script type="text/javascript">
+        const spec = "js/world_map.vg.json";
+        vegaEmbed('#symbol_map', spec).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
 
-    <h2> 1.3 Embedding Images (Level 2)</h2>
-    <p>This is the fourth paragraph about images in HTML. </p>
 </body>
-
 </html>
