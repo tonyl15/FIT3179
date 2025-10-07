@@ -11,11 +11,20 @@
 </head>
 
 <body>
-    <div id="symbol_map"></div>
+    <div class="main-container">
+        <div id="world_map"></div>
+        <div id="inflation_chart"></div>
+    </div>
     
     <script type="text/javascript">
-        const spec = "js/world_map.vg.json";
-        vegaEmbed('#symbol_map', spec).then(function(result) {
+        const spec1 = "js/world_map.vg.json";
+        const spec2 = "js/inflation_rate.vg.json";
+        
+        vegaEmbed('#world_map', spec1).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#inflation_chart', spec2).then(function(result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
     </script>
