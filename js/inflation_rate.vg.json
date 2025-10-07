@@ -14,15 +14,23 @@
   },
   "transform": [
     {
-      "fold": ["Sydney", "Melbourne", "Brisbane", "Adelaide", "Perth", "Hobart", "Darwin", "Canberra", "Australia"],
-      "as": ["City", "Inflation_Rate"]
+      "fold": [
+        "Sydney",
+        "Melbourne",
+        "Brisbane",
+        "Adelaide",
+        "Perth",
+        "Hobart",
+        "Darwin",
+        "Canberra",
+        "Australia"
+      ],
+      "as": [
+        "City",
+        "Inflation_Rate"
+      ]
     }
   ],
-  "mark": {
-    "type": "line",
-    "point": false,
-    "strokeWidth": 2
-  },
   "encoding": {
     "x": {
       "field": "Date",
@@ -37,16 +45,95 @@
       "field": "Inflation_Rate",
       "type": "quantitative",
       "title": "Inflation Rate (%)"
+    }
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "city_selection",
+          "select": {
+            "type": "point",
+            "fields": ["City"]
+          },
+          "bind": "legend"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "point": {"filled": true, "size": 15},
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "City",
+          "type": "nominal",
+          "title": "City"
+        },
+        "opacity": {
+          "condition": {
+            "param": "city_selection",
+            "value": 1
+          },
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "format": "%b %Y"
+          },
+          {
+            "field": "City",
+            "type": "nominal"
+          },
+          {
+            "field": "Inflation_Rate",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Inflation Rate (%)"
+          }
+        ]
+      }
     },
-    "color": {
-      "field": "City",
-      "type": "nominal",
-      "title": "City"
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 20,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum.Inflation_Rate == 13.1",
+            "value": "Highest inflation rate recorded in Sydney in 1982"
+          },
+          "value": ""
+        }
+      }
     },
-    "tooltip": [
-      {"field": "Date", "type": "temporal", "format": "%b %Y"},
-      {"field": "City", "type": "nominal"},
-      {"field": "Inflation_Rate", "type": "quantitative", "format": ".1f", "title": "Inflation Rate (%)"}
-    ]
-  }
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum.Inflation_Rate == -1.8",
+            "value": "Lowest inflation rate recorded in Darwin in 2020"
+          },
+          "value": ""
+        }
+      }
+    }
+      
+  ]
 }
