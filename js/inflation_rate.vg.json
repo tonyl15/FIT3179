@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Inflation Rate in Australia by Capital City Over Time",
+  "width": 1200,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/Inflation%20rate.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Date": "date:'%b-%y'"
+      }
+    }
+  },
+  "transform": [
+    {
+      "fold": ["Sydney", "Melbourne", "Brisbane", "Adelaide", "Perth", "Hobart", "Darwin", "Canberra", "Australia"],
+      "as": ["City", "Inflation_Rate"]
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": false,
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {
+        "format": "%Y",
+        "labelAngle": -45
+      }
+    },
+    "y": {
+      "field": "Inflation_Rate",
+      "type": "quantitative",
+      "title": "Inflation Rate (%)"
+    },
+    "color": {
+      "field": "City",
+      "type": "nominal",
+      "title": "City"
+    },
+    "tooltip": [
+      {"field": "Date", "type": "temporal", "format": "%b %Y"},
+      {"field": "City", "type": "nominal"},
+      {"field": "Inflation_Rate", "type": "quantitative", "format": ".1f", "title": "Inflation Rate (%)"}
+    ]
+  }
+}
