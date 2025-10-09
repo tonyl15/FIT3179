@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Comparison Between Diversity and Affordability",
+  "width": 500,
+  "height": 450,
+  "params": [
+  {
+    "name": "year_selection",
+    "value": 2021,
+    "bind": {
+      "input": "range",
+      "min": 2001,
+      "max": 2021,
+      "step": 5,
+      "name": "Year: "
+    }
+  }],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/births_by_state_region.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.year == year_selection"
+        }],
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "state",
+          "type": "nominal",
+          "axis": {
+            "title": "State"
+          }
+        },
+        "y": {
+          "field": "proportion",
+          "type": "quantitative",
+          "axis": {
+            "title": "Proportion of Residents",
+            "format": "%"
+          },
+          "scale": {"domain": [0, 0.38]}
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "legend": {
+            "title": "Region of Birth"
+          }
+        },
+        "tooltip": [
+          {"field": "proportion", "type": "quantitative", "title": "Proportion", "format": ".2%"},
+          {"field": "region", "type": "nominal", "title": "Region"}
+        ]
+      }
+    }
+  ]
+}

@@ -76,7 +76,7 @@
           "field": "proportion",
           "type": "quantitative",
           "scale": {
-            "domain": [0, 0.61],
+            "domain": [0, 0.14],
             "range": ["#f7fbff", "#0868ac"]
           },
           "legend": {
