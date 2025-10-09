@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/combined_data.csv"
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2024,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.year == year_select"
+    },
+    {
+      "calculate": "datum.total_proportion",
+      "as": "Overseas Proportion"
+    },
+    {
+      "calculate": "datum.house_price",
+      "as": "House Price"
+    },
+    {
+      "calculate": "datum.inflation_rate", 
+      "as": "Inflation Rate"
+    },
+    {
+      "calculate": "datum.min_wage",
+      "as": "Min Wage"
+    }
+  ],
+  "repeat": {
+    "row": ["Overseas Proportion", "House Price", "Inflation Rate", "Min Wage"],
+    "column": ["Overseas Proportion", "House Price", "Inflation Rate", "Min Wage"]
+  },
+  "spec": {
+    "width": 150,
+    "height": 150,
+    "mark": {
+      "type": "circle",
+      "size": 80
+    },
+    "encoding": {
+      "x": {
+        "field": {"repeat": "column"},
+        "type": "quantitative"
+      },
+      "y": {
+        "field": {"repeat": "row"},
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal",
+        "legend": {
+          "title": "State"
+        }
+      },
+      "tooltip": [
+        {"field": "state", "type": "nominal", "title": "State"},
+        {"field": "year", "type": "quantitative", "title": "Year"},
+        {"field": "total_proportion", "type": "quantitative", "title": "Birth Proportion", "format": ".3f"},
+        {"field": "house_price", "type": "quantitative", "title": "House Price ($'000)", "format": ".1f"},
+        {"field": "inflation_rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"},
+        {"field": "min_wage", "type": "quantitative", "title": "Min Wage ($/hr)", "format": ".2f"}
+      ]
+    }
+  }
+}
