@@ -7829,7 +7829,7 @@
           "type": "Polygon",
           "properties": {
             "STE_CODE16": "1",
-            "STE_NAME16": "New South Wales",
+            "STE_NAME16": "NSW",
             "AREASQKM16": 800810.7823
           }
         },
@@ -7851,7 +7851,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "2",
-            "STE_NAME16": "Victoria",
+            "STE_NAME16": "VIC",
             "AREASQKM16": 227495.6304
           }
         },
@@ -7920,7 +7920,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "3",
-            "STE_NAME16": "Queensland",
+            "STE_NAME16": "QLD",
             "AREASQKM16": 1730172.0833
           }
         },
@@ -7945,7 +7945,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "4",
-            "STE_NAME16": "South Australia",
+            "STE_NAME16": "SA",
             "AREASQKM16": 984274.908
           }
         },
@@ -7982,7 +7982,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "5",
-            "STE_NAME16": "Western Australia",
+            "STE_NAME16": "WA",
             "AREASQKM16": 2526646.2389
           }
         },
@@ -8022,7 +8022,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "6",
-            "STE_NAME16": "Tasmania",
+            "STE_NAME16": "TA",
             "AREASQKM16": 68017.8607
           }
         },
@@ -8090,7 +8090,7 @@
           "type": "MultiPolygon",
           "properties": {
             "STE_CODE16": "7",
-            "STE_NAME16": "Northern Territory",
+            "STE_NAME16": "NT",
             "AREASQKM16": 1348094.3281
           }
         },
@@ -8103,7 +8103,7 @@
           "type": "Polygon",
           "properties": {
             "STE_CODE16": "8",
-            "STE_NAME16": "Australian Capital Territory",
+            "STE_NAME16": "ACT",
             "AREASQKM16": 2358.172
           }
         },
