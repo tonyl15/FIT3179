@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Proportion of Population by Region of Birth Outside of Australia",
+  "width": 700,
+  "height": 520,
+  "params": [
+    {
+      "name": "year_selection",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2021,
+        "step": 5,
+        "name": "Year: "
+      }
+    },
+    {
+      "name": "region_selection",
+      "value": "North-West Europe",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Oceania and Antarctica",
+          "North-West Europe", 
+          "Southern and Eastern Europe",
+          "North Africa and the Middle East",
+          "South-East Asia",
+          "North-East Asia",
+          "Southern and Central Asia",
+          "Americas",
+          "Sub-Saharan Africa"
+        ],
+        "name": "Region: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/births_by_state_region.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.year == year_selection && datum.region == region_selection"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/js/state_borders.json",
+              "format": {
+                "type": "topojson",
+                "feature": "STE_2016_AUST"
+              }
+            },
+            "key": "properties.STE_NAME16"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "encoding": {
+        "shape": {
+          "field": "geo",
+          "type": "geojson"
+        },
+        "color": {
+          "field": "proportion",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 0.61],
+            "range": ["#f7fbff", "#0868ac"]
+          },
+          "legend": {
+            "title": "Proportion of Residents",
+            "format": "%"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State/Territory"
+          },
+          {
+            "field": "proportion",
+            "type": "quantitative",
+            "title": "Proportion",
+            "format": ".2%"
+          }
+        ]
+      }
+    }
+  ]
+}
