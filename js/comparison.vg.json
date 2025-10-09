@@ -3,6 +3,11 @@
   "title": "Comparison Between Diversity and Affordability",
   "width": 500,
   "height": 450,
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  },
   "params": [
   {
     "name": "year_selection",
@@ -38,7 +43,8 @@
           "type": "quantitative",
           "axis": {
             "title": "Proportion of Residents",
-            "format": "%"
+            "format": "%",
+            "orient": "left"
           },
           "scale": {"domain": [0, 0.38]}
         },
@@ -52,6 +58,76 @@
         "tooltip": [
           {"field": "proportion", "type": "quantitative", "title": "Proportion", "format": ".2%"},
           {"field": "region", "type": "nominal", "title": "Region"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/House%20prices.csv"
+      },
+      "transform": [
+        {
+          "filter": "split(datum.Date, '-')[0] == 'Dec'"
+        },
+        {
+          "calculate": "parseInt(split(datum.Date, '-')[1]) + 2000",
+          "as": "year"
+        },
+        {
+          "filter": "datum.year == year_selection"
+        },
+        {
+          "fold": ["Sydney", "Melbourne", "Brisbane", "Adelaide", "Perth", "Hobart", "Darwin", "Canberra"],
+          "as": ["city", "house_price"]
+        },
+        {
+          "calculate": "datum.city == 'Sydney' ? 'NSW' : datum.city == 'Melbourne' ? 'VIC' : datum.city == 'Brisbane' ? 'QLD' : datum.city == 'Adelaide' ? 'SA' : datum.city == 'Perth' ? 'WA' : datum.city == 'Hobart' ? 'TA' : datum.city == 'Darwin' ? 'NT' : datum.city == 'Canberra' ? 'ACT' : datum.city",
+          "as": "state"
+        },
+        {
+          "lookup": "year",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/Minimum%20wage.csv"
+            },
+            "key": "Date",
+            "fields": ["MinWagePerWeek"]
+          }
+        },
+        {
+          "calculate": "datum.house_price * 1000 / (datum.MinWagePerWeek * 52)",
+          "as": "affordability_ratio"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "state",
+          "type": "nominal",
+          "axis": {
+            "title": "State"
+          }
+        },
+        "y": {
+          "field": "affordability_ratio",
+          "type": "quantitative",
+          "axis": {
+            "title": "Years of Minimum Wage to Buy House",
+            "orient": "right"
+          },
+          "scale": {"domain": [0, 40]}
+        },
+        "color": {
+          "value": "red"
+        },
+        "tooltip": [
+          {"field": "house_price", "type": "quantitative", "title": "House Price ($'000)"},
+          {"field": "MinWagePerWeek", "type": "quantitative", "title": "Min Wage/Week ($)"},
+          {"field": "affordability_ratio", "type": "quantitative", "title": "Years to Buy", "format": ".1f"}
         ]
       }
     }
