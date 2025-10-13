@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Minimum Wage Over Time",
+  "data": {
+    "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/Minimum%20wage.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "date:'%Y'"
+      }
+    }
+  },
+  "vconcat": [
+    {
+      "width": 500,
+      "height": 250,
+      "mark": "area",
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "scale": {"domain": {"param": "brush"}},
+          "axis": {
+            "title": "Year",
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "MinWagePerHr",
+          "type": "quantitative",
+          "axis": {
+            "title": "Minimum Wage"
+          },
+          "scale": {
+            "domain": [
+              0,
+              25
+            ]
+          }
+        },
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y"},
+          {"field": "MinWagePerHr", "type": "quantitative", "title": "Minimum Wage ($)"}
+        ]
+      }
+    },
+    {
+      "width": 500,
+      "height": 50,
+      "mark": "area",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
+      ],
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "axis": {
+            "title": "Year",
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "MinWagePerHr",
+          "type": "quantitative",
+          "axis": {
+            "title": "Minimum Wage",
+            "tickCount": 3,
+            "grid": false
+          }
+        }
+      }
+    }
+  ]
+}
