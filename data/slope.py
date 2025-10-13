@@ -1,14 +1,14 @@
 import pandas as pd
 import numpy as np
 
-def calculate_rate_of_change(start_value, end_value):
-    """Calculate percentage rate of change between two values."""
+def calculate_ratio(start_value, end_value):
+    """Calculate ratio of end_value to start_value (how many times greater/lesser)."""
     if start_value == 0:
-        return np.inf if end_value != 0 else 0
-    return ((end_value - start_value) / start_value) * 100
+        return np.inf if end_value != 0 else 1.0
+    return end_value / start_value
 
-def get_rate_of_change_analysis():
-    """Calculate rate of change for all fields across all states in 5-year intervals."""
+def get_ratio_analysis():
+    """Calculate ratios for all fields across all states in 5-year intervals."""
     
     # Read the data
     df = pd.read_csv('combined_data.csv')
@@ -30,7 +30,7 @@ def get_rate_of_change_analysis():
     # Results storage
     results = []
     
-    print("Rate of Change Analysis (%) - 5-Year Intervals")
+    print("Ratio Analysis - 5-Year Intervals")
     print("=" * 80)
     
     for state in states:
@@ -62,12 +62,17 @@ def get_rate_of_change_analysis():
                 start_value = start_data[field].iloc[0]
                 end_value = end_data[field].iloc[0]
                 
-                rate_change = calculate_rate_of_change(start_value, end_value)
+                ratio = calculate_ratio(start_value, end_value)
                 
-                interval_results[f'{field}_rate_change'] = round(rate_change, 2)
+                interval_results[f'{field}_ratio'] = round(ratio, 3)
                 
                 print(f"  {field}:")
-                print(f"    Rate of change: {rate_change:.2f}%")
+                if ratio > 1:
+                    print(f"    Ratio: {ratio:.3f}x (increased by {ratio:.3f} times)")
+                elif ratio < 1:
+                    print(f"    Ratio: {ratio:.3f}x (decreased to {ratio:.3f} of original)")
+                else:
+                    print(f"    Ratio: {ratio:.3f}x (no change)")
             
             results.append(interval_results)
     
@@ -84,16 +89,16 @@ def get_rate_of_change_analysis():
     print("=" * 80)
     
     for field in fields:
-        rate_col = f'{field}_rate_change'
-        if rate_col in results_df.columns:
-            print(f"\n{field.upper()} Rate of Change Statistics:")
-            print(f"  Mean: {results_df[rate_col].mean():.2f}%")
-            print(f"  Median: {results_df[rate_col].median():.2f}%")
-            print(f"  Min: {results_df[rate_col].min():.2f}%")
-            print(f"  Max: {results_df[rate_col].max():.2f}%")
-            print(f"  Std Dev: {results_df[rate_col].std():.2f}%")
+        ratio_col = f'{field}_ratio'
+        if ratio_col in results_df.columns:
+            print(f"\n{field.upper()} Ratio Statistics:")
+            print(f"  Mean: {results_df[ratio_col].mean():.3f}x")
+            print(f"  Median: {results_df[ratio_col].median():.3f}x")
+            print(f"  Min: {results_df[ratio_col].min():.3f}x")
+            print(f"  Max: {results_df[ratio_col].max():.3f}x")
+            print(f"  Std Dev: {results_df[ratio_col].std():.3f}")
     
     return results_df
 
 if __name__ == "__main__":
-    results = get_rate_of_change_analysis()
+    results = get_ratio_analysis()
