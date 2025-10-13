@@ -3,6 +3,19 @@
   "title": "Inflation Rate Over Time by Capital City",
   "width": 500,
   "height": 500,
+  "resolve": {
+    "legend": {
+      "color": "independent"
+    }
+  },
+  "config": {
+    "legend": {
+      "orient": "none",
+      "direction": "horizontal",
+      "legendX": 150,
+      "legendY": 225
+    }
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/Inflation%20rate.csv",
     "format": {
@@ -33,66 +46,119 @@
       }
     }
   ],
-  "transform": [
+  "layer": [
     {
-      "fold": [
-        "Sydney",
-        "Melbourne",
-        "Brisbane",
-        "Adelaide",
-        "Perth",
-        "Hobart",
-        "Darwin",
-        "Canberra",
-        "Australia"
+      "transform": [
+        {
+          "fold": [
+            "Sydney",
+            "Melbourne",
+            "Brisbane",
+            "Adelaide",
+            "Perth",
+            "Hobart",
+            "Darwin",
+            "Canberra",
+            "Australia"
+          ],
+          "as": [
+            "City",
+            "Inflation_Rate"
+          ]
+        },
+        {
+          "filter": "datum.City == city_selection"
+        },
+        {
+          "calculate": "quarter(datum.Date)",
+          "as": "Quarter"
+        },
+        {
+          "calculate": "year(datum.Date)",
+          "as": "Year"
+        }
       ],
-      "as": [
-        "City",
-        "Inflation_Rate"
-      ]
-    },
-    {
-      "filter": "datum.City == city_selection"
-    },
-    {
-      "calculate": "quarter(datum.Date)",
-      "as": "Quarter"
-    },
-    {
-      "calculate": "year(datum.Date)",
-      "as": "Year"
-    }
-  ],
-  "mark": {
-    "type": "arc",
-    "innerRadius": 200,
-    "stroke": "white",
-    "strokeWidth": 0.5
-  },
-  "encoding": {
-    "theta": {
-      "field": "Year",
-      "type": "ordinal",
-      "sort": "ascending"
-    },
-    "radius": {
-      "field": "Quarter",
-      "type": "ordinal",
-      "scale": {
-        "type": "band",
-        "range": [150, 240]
+      "mark": {
+        "type": "arc",
+        "innerRadius": 200,
+        "stroke": "white",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "theta": {
+          "field": "Year",
+          "type": "ordinal",
+          "sort": "ascending"
+        },
+        "radius": {
+          "field": "Quarter",
+          "type": "ordinal",
+          "scale": {
+            "type": "band",
+            "range": [150, 260]
+          }
+        },
+        "color": {
+          "field": "Inflation_Rate",
+          "type": "quantitative",
+          "title": "Inflation Rate (%)"
+        },
+        "tooltip": [
+          {"field": "Quarter", "type": "quantitative", "title": "Quarter"},
+          {"field": "Year", "type": "ordinal", "title": "Year"},
+          {"field": "Date", "type": "temporal", "title": "Month", "format": "%B"},
+          {"field": "Inflation_Rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"}
+        ]
       }
     },
-    "color": {
-      "field": "Inflation_Rate",
-      "type": "quantitative",
-      "title": "Inflation Rate (%)"
+    {
+      "transform": [
+        {
+          "calculate": "year(datum.Date)",
+          "as": "Year"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "radius": 280,
+        "color": "black"
+      },
+      "encoding": {
+        "theta": {
+          "field": "Year",
+          "type": "ordinal",
+          "sort": "ascending"
+        },
+        "text": {
+          "field": "Year",
+          "type": "ordinal"
+        }
+      }
     },
-    "tooltip": [
-      {"field": "Quarter", "type": "quantitative", "title": "Quarter"},
-      {"field": "Year", "type": "ordinal", "title": "Year"},
-      {"field": "Date", "type": "temporal", "title": "Month", "format": "%B"},
-      {"field": "Inflation_Rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"}
-    ]
-  }
+    {
+      "data": {
+        "values": [
+          {"label": "Q1", "radius": 162.5},
+          {"label": "Q2", "radius": 187.5},
+          {"label": "Q3", "radius": 212.5},
+          {"label": "Q4", "radius": 237.5}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "theta": 3.14159,
+        "color": "black"
+      },
+      "encoding": {
+        "radius": {
+          "field": "radius",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }
