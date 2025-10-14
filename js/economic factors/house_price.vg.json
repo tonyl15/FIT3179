@@ -1,0 +1,163 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Median House Price Over Time by Capital City",
+  "width": 500,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/House%20prices.csv"
+  },
+  "params": [
+    {
+      "name": "year_select",
+      "value": 2001,
+      "bind": {
+        "input": "range",
+        "min": 2001,
+        "max": 2024,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == year_select"
+        },
+        {
+          "fold": [
+            "Sydney",
+            "Melbourne",
+            "Brisbane",
+            "Adelaide",
+            "Perth",
+            "Hobart",
+            "Darwin",
+            "Canberra",
+            "Australia"
+          ],
+          "as": [
+            "City",
+            "House_Price"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "stroke": "white",
+        "strokeWidth": 8
+      },
+      "encoding": {
+        "theta": {"field": "City", "type": "nominal"},
+        "radius": {
+          "field": "House_Price", 
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "City", "type": "nominal", "title": "City"},
+          {"field": "House_Price", "type": "quantitative", "title": "House Price ($)", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"price_level": 200000, "radius": 80},
+          {"price_level": 400000, "radius": 110},
+          {"price_level": 600000, "radius": 140},
+          {"price_level": 800000, "radius": 170},
+          {"price_level": 1000000, "radius": 200}
+        ]
+      },
+      "mark": {
+        "type": "arc",
+        "theta": 6.28,
+        "stroke": "lightgray",
+        "strokeWidth": 1,
+        "fill": null,
+        "innerRadius": 50
+      },
+      "encoding": {
+        "radius": {
+          "field": "radius",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"price_level": "$200K", "radius": 80, "theta": 0},
+          {"price_level": "$400K", "radius": 110, "theta": 0},
+          {"price_level": "$600K", "radius": 140, "theta": 0},
+          {"price_level": "$800K", "radius": 170, "theta": 0},
+          {"price_level": "$1M", "radius": 200, "theta": 0}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "color": "gray",
+        "dx": 5
+      },
+      "encoding": {
+        "theta": {
+          "field": "theta",
+          "type": "quantitative"
+        },
+        "radius": {
+          "field": "radius",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "price_level",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == year_select"
+        },
+        {
+          "fold": [
+            "Sydney",
+            "Melbourne",
+            "Brisbane",
+            "Adelaide",
+            "Perth",
+            "Hobart",
+            "Darwin",
+            "Canberra",
+            "Australia"
+          ],
+          "as": [
+            "City",
+            "House_Price"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "black"
+      },
+      "encoding": {
+        "theta": {"field": "City", "type": "nominal"},
+        "radius": {
+          "field": "House_Price", 
+          "type": "quantitative",
+          "scale": {"type": "sqrt", "range": [60, 200]}
+        },
+        "text": {
+          "field": "City",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}
