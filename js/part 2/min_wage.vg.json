@@ -14,35 +14,59 @@
     {
       "width": 500,
       "height": 250,
-      "mark": "area",
-      "encoding": {
-        "x": {
-          "field": "Date",
-          "type": "temporal",
-          "scale": {"domain": {"param": "brush"}},
-          "axis": {
-            "title": "Year",
-            "labelAngle": 0
-          }
-        },
-        "y": {
-          "field": "MinWagePerHr",
-          "type": "quantitative",
-          "axis": {
-            "title": "Minimum Wage"
-          },
-          "scale": {
-            "domain": [
-              0,
-              25
+      "layer": [
+        {
+          "mark": "area",
+          "encoding": {
+            "x": {
+              "field": "Date",
+              "type": "temporal",
+              "scale": {"domain": {"param": "brush"}},
+              "axis": {
+                "title": "Year",
+                "labelAngle": 0
+              }
+            },
+            "y": {
+              "field": "MinWagePerHr",
+              "type": "quantitative",
+              "axis": {
+                "title": "Minimum Wage Per Hr ($)"
+              },
+              "scale": {
+                "domain": [
+                  0,
+                  25
+                ]
+              }
+            },
+            "tooltip": [
+              {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y"},
+              {"field": "MinWagePerHr", "type": "quantitative", "title": "Minimum Wage ($)"}
             ]
           }
         },
-        "tooltip": [
-          {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y"},
-          {"field": "MinWagePerHr", "type": "quantitative", "title": "Minimum Wage ($)"}
-        ]
-      }
+        {
+          "mark": {
+            "type": "text",
+            "dx": -100,
+            "dy": -30
+          },
+          "encoding": {
+            "x": {
+              "datum": {"year": 2023},
+              "type": "temporal",
+              "scale": {"domain": {"param": "brush"}}
+            },
+            "y": {
+              "datum": 20
+            },
+            "text": {
+              "value": "2023 had the greatest increase"
+            }
+          }
+        }
+      ]
     },
     {
       "width": 500,
@@ -64,7 +88,7 @@
           "field": "MinWagePerHr",
           "type": "quantitative",
           "axis": {
-            "title": "Minimum Wage",
+            "title": "Minimum Wage Per Hr ($)",
             "tickCount": 3,
             "grid": false
           }
