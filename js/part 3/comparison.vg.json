@@ -97,13 +97,13 @@
             {
               "mark": {"type": "line", "interpolate": "monotone"},
               "encoding": {
-                "x": {"field": "year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021]}},
+                "x": {"field": "year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
                 "y": {"field": "rank", "type": "quantitative", "axis": {"title": "Rank (1 = Highest)"}, "scale": {"reverse": true, "domainMin": 1}},
                 "color": {"field": "state", "type": "nominal", "legend": null},
                 "detail": {"field": "state"},
                 "tooltip": [
                   {"field": "state", "type": "nominal", "title": "State"},
-                  {"field": "year", "type": "quantitative", "title": "Year"},
+                  {"field": "year", "type": "quantitative", "title": "Year", "format": "d"},
                   {"field": "total_proportion", "type": "quantitative", "title": "Proportion", "format": ".2%"},
                   {"field": "rank", "type": "quantitative", "title": "Rank"}
                 ]
@@ -163,13 +163,13 @@
             {
               "mark": {"type": "line", "interpolate": "monotone"},
               "encoding": {
-                "x": {"field": "Year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021]}},
+                "x": {"field": "Year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
                 "y": {"field": "rank", "type": "quantitative", "axis": {"title": "Rank (1 = Most Years)"}, "scale": {"reverse": true, "domainMin": 1}},
                 "color": {"field": "state", "type": "nominal", "legend": null},
                 "detail": {"field": "state"},
                 "tooltip": [
                   {"field": "state", "type": "nominal", "title": "State"},
-                  {"field": "Year", "type": "quantitative", "title": "Year"},
+                  {"field": "Year", "type": "quantitative", "title": "Year", "format": "d"},
                   {"field": "affordability_ratio", "type": "quantitative", "title": "Years to Buy", "format": ".1f"},
                   {"field": "rank", "type": "quantitative", "title": "Rank"}
                 ]
