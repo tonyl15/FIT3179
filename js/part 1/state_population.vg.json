@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Proportion of Population by Region of Birth Outside of Australia",
+  "title": {"text": "Proportion of Population by Region of Birth Outside of Australia", "fontSize": 25},
   "width": 700,
   "height": 520,
   "params": [
@@ -84,7 +84,11 @@
             "format": "%",
             "direction": "horizontal",
             "orient": "bottom-left",
-            "gradientLength": 200
+            "gradientLength": 230,
+            "gradientThickness": 20,
+            "titleFontSize": 20,
+            "labelFontSize": 15,
+            "titleLimit": 300
           }
         },
         "tooltip": [

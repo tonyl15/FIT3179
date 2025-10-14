@@ -83,7 +83,10 @@
             "title": "House Price ($'000)",
             "format": ",.0f"
           }
-        ]
+        ],
+        "color": {
+          "value": "#3887c0"
+        }
       }
     },
     {

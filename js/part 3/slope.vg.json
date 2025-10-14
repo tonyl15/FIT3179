@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": "Growth/Decline Ratios of Variables Over Time",
+  "title": {"text": "Increase/Decrease in Variables Over Time", "fontSize": 20},
   "width": 500,
   "height": 500,
   "data": {
@@ -62,14 +62,24 @@
           "type": "ordinal",
           "title": "Time Interval",
           "axis": {
-            "labelAngle": 0
+            "labelAngle": 0,
+            "labelColor": "black",
+            "gridColor": "gray",
+            "tickColor": "gray",
+            "domainColor": "gray"
           }
         },
         "y": {
           "field": "ratio_value",
           "type": "quantitative",
           "title": "Amount of change between years (x times)",
-          "scale": {"zero": false}
+          "scale": {"zero": false},
+          "axis": {
+            "labelAngle": 0,
+            "labelColor": "black",
+            "tickColor": "gray",
+            "domainColor": "gray"
+          }
         },
         "color": {
           "field": "variable_label",
@@ -87,7 +97,7 @@
           {
             "field": "ratio_value",
             "type": "quantitative",
-            "title": "Change Compared to Previous Year",
+            "title": "Amount of Change (x times)",
             "format": ".3f"
           },
           {
