@@ -101,7 +101,10 @@
         "color": {
           "field": "Inflation_Rate",
           "type": "quantitative",
-          "title": "Inflation Rate (%)"
+          "title": "Inflation Rate (%)",
+          "scale": {
+            "domain": [-1.8, 13.1]
+          }
         },
         "tooltip": [
           {"field": "Quarter", "type": "quantitative", "title": "Quarter"},
