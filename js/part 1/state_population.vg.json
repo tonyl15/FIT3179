@@ -81,7 +81,10 @@
           },
           "legend": {
             "title": "Proportion of Residents",
-            "format": "%"
+            "format": "%",
+            "direction": "horizontal",
+            "orient": "bottom-left",
+            "gradientLength": 200
           }
         },
         "tooltip": [
