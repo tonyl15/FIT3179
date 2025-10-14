@@ -1,0 +1,195 @@
+/* Import Pure CSS framework */
+@import url('https://unpkg.com/purecss@2.0.6/build/pure-min.css');
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.page {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Headers */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Section spacing */
+.pure-g {
+    margin-bottom: 30px;
+}
+
+/* Description boxes */
+.description {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    margin: 10px;
+    height: fit-content;
+}
+
+.description-left {
+    margin-right: 20px;
+}
+
+.description-center {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.description p {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    text-align: justify;
+}
+
+/* Visualization containers */
+.vis-container {
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-height: 400px;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Make Vega-Lite visualizations responsive */
+.vis-container .vega-embed {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.vis-container .vega-embed details,
+.vis-container .vega-embed summary {
+    display: none !important;
+}
+
+.vis-container .vega-embed .vega-actions {
+    display: none !important;
+}
+
+/* Responsive sizing for different sections */
+.pure-u-1-3 .vis-container {
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.pure-u-2-3 .vis-container {
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.pure-u-1-2 .vis-container {
+    max-width: 100%;
+    max-height: 550px;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .page {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .pure-u-1-3, .pure-u-2-3, .pure-u-1-2 {
+        width: 100% !important;
+    }
+    
+    .description-left {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .vis-container {
+        margin: 5px 0;
+        max-height: 400px;
+    }
+    
+    /* Force smaller visualizations on mobile */
+    .vis-container .vega-embed canvas,
+    .vis-container .vega-embed svg {
+        max-width: 100% !important;
+        max-height: 350px !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}
+
+/* Tablet responsiveness */
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .vis-container {
+        max-height: 500px;
+    }
+    
+    .vis-container .vega-embed canvas,
+    .vis-container .vega-embed svg {
+        max-width: 100% !important;
+        max-height: 450px !important;
+    }
+}
+
+/* Force responsive behavior for all visualizations */
+.vega-embed canvas,
+.vega-embed svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Container overflow handling */
+.vis-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.vis-container .vega-embed {
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Loading state */
+.vis-container:empty::before {
+    content: "Loading visualization...";
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Introduction paragraph */
+.page > .pure-g:first-child p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}

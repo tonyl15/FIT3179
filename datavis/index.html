@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FIT3179 Visualisation 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h1>The Cost of Belonging: Diversity & Affordability in Australia</h1>
+        </div>
+      </div>
+
+      <!-- Section 1: State Population -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h3>State Population Overview</h3>
+            <p>
+              This visualization shows the population distribution across
+              different Australian states and territories. The data provides
+              insights into demographic patterns and regional population
+              concentrations throughout Australia.
+            </p>
+            <p>
+              You can explore how population varies across different states and
+              observe the relative sizes of each state's population compared to
+              the national total.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+      </div>
+
+      <!-- Section 2: Economic Factors -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Economic Factors Analysis</h2>
+          <p>
+            Exploring key economic indicators across Australian capital cities
+          </p>
+        </div>
+      </div>
+      
+      <!-- House Prices -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h3>House Prices</h3>
+            <p>
+              Median house price trends across Australian capital cities over
+              time. This visualization shows how property values have evolved across different metropolitan areas, highlighting regional variations and temporal patterns in the Australian housing market.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis2" class="vis-container"></div>
+        </div>
+      </div>
+      
+      <!-- Inflation Rates -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h3>Inflation Rates</h3>
+            <p>
+              Inflation rate patterns showing economic conditions across
+              different cities. This radial visualization displays quarterly inflation data, allowing for comparison of economic stability and price level changes across Australian capital cities.
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis3" class="vis-container"></div>
+        </div>
+      </div>
+      
+      <!-- Minimum Wage -->
+      <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <h3>Minimum Wage</h3>
+            <p>Minimum wage progression and regional variations over time. This analysis examines how minimum wage policies have evolved and their impact across different Australian jurisdictions.</p>
+          </div>
+        </div>
+        <div class="pure-u-2-3">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+      </div>
+
+      <!-- Section 3: Comparative Analysis -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+          <h2>Comparative Analysis</h2>
+          <p>
+            Advanced comparative visualizations exploring relationships between
+            different economic and demographic factors
+          </p>
+        </div>
+      </div>
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div class="description description-center">
+            <h3>Multi-factor Comparison</h3>
+            <p>
+              Interactive comparison of housing affordability, birth rates, and
+              economic indicators across states.
+            </p>
+          </div>
+          <div id="vis5" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="description description-center">
+            <h3>Trend Analysis</h3>
+            <p>
+              Slope chart showing changes and trends in key metrics over time
+              periods.
+            </p>
+          </div>
+          <div id="vis6" class="vis-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+        // Responsive embed options
+        const embedOptions = {
+            actions: false,
+            renderer: "svg",
+            scaleFactor: 1,
+            theme: "fivethirtyeight"
+        };
+
+        // Section 1: State Population
+        var specVis1 = "../js/part 1/state_population.vg.json";
+        vegaEmbed('#vis1', specVis1, embedOptions).then(function(result) {
+            // Make responsive
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        // Section 2: Economic Factors
+        var specVis2 = "../js/part 2/house_price.vg.json";
+        vegaEmbed('#vis2', specVis2, embedOptions).then(function(result) {
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        var specVis3 = "../js/part 2/inflation.vg.json";
+        vegaEmbed('#vis3', specVis3, embedOptions).then(function(result) {
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        var specVis4 = "../js/part 2/min_wage.vg.json";
+        vegaEmbed('#vis4', specVis4, embedOptions).then(function(result) {
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        // Section 3: Comparative Analysis
+        var specVis5 = "../js/part 3/comparison.vg.json";
+        vegaEmbed('#vis5', specVis5, embedOptions).then(function(result) {
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        var specVis6 = "../js/part 3/slope.vg.json";
+        vegaEmbed('#vis6', specVis6, embedOptions).then(function(result) {
+            const view = result.view;
+            view.addEventListener('resize', () => {
+                view.runAsync();
+            });
+        }).catch(console.error);
+
+        // Add window resize listener for all visualizations
+        window.addEventListener('resize', function() {
+            // Trigger resize for all embedded visualizations
+            document.querySelectorAll('.vega-embed').forEach(embed => {
+                if (embed._vega_view) {
+                    embed._vega_view.runAsync();
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
