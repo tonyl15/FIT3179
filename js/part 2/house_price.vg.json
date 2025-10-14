@@ -34,8 +34,7 @@
             "Perth",
             "Hobart",
             "Darwin",
-            "Canberra",
-            "Australia"
+            "Canberra"
           ],
           "as": [
             "City",
@@ -46,29 +45,60 @@
       "mark": {
         "type": "arc",
         "innerRadius": 50,
-        "stroke": "white",
-        "strokeWidth": 8
+        "stroke": "#F0F0F0",
+        "strokeWidth": 2
       },
       "encoding": {
-        "theta": {"field": "City", "type": "nominal"},
+        "theta": {
+          "field": "City",
+          "type": "nominal",
+          "scale": {"domain": [
+            "Sydney", "Melbourne", "Brisbane", "Adelaide",
+            "Perth", "Hobart", "Darwin", "Canberra"
+          ]}
+        },
         "radius": {
-          "field": "House_Price", 
-          "type": "quantitative"
+          "field": "House_Price",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              200,
+              1500
+            ],
+            "range": [
+              80,
+              200
+            ]
+          }
         },
         "tooltip": [
-          {"field": "City", "type": "nominal", "title": "City"},
-          {"field": "House_Price", "type": "quantitative", "title": "House Price ($)", "format": ",.0f"}
+          {
+            "field": "City",
+            "type": "nominal",
+            "title": "City"
+          },
+          {
+            "field": "House_Price",
+            "type": "quantitative",
+            "title": "House Price ($'000)",
+            "format": ",.0f"
+          }
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"price_level": 200000, "radius": 80},
-          {"price_level": 400000, "radius": 110},
-          {"price_level": 600000, "radius": 140},
-          {"price_level": 800000, "radius": 170},
-          {"price_level": 1000000, "radius": 200}
+          {
+            "price_k": 500
+          },
+          {
+            "price_k": 1000
+          },
+          {
+            "price_k": 1500
+          }
         ]
       },
       "mark": {
@@ -81,25 +111,46 @@
       },
       "encoding": {
         "radius": {
-          "field": "radius",
-          "type": "quantitative"
+          "field": "price_k",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              200,
+              1500
+            ],
+            "range": [
+              80,
+              200
+            ]
+          }
         }
       }
     },
     {
       "data": {
         "values": [
-          {"price_level": "$200K", "radius": 80, "theta": 0},
-          {"price_level": "$400K", "radius": 110, "theta": 0},
-          {"price_level": "$600K", "radius": 140, "theta": 0},
-          {"price_level": "$800K", "radius": 170, "theta": 0},
-          {"price_level": "$1M", "radius": 200, "theta": 0}
+          {
+            "price_label": "$500K",
+            "price_k": 500,
+            "theta": 1
+          },
+          {
+            "price_label": "$1M",
+            "price_k": 1000,
+            "theta": 1
+          },
+          {
+            "price_label": "$1.5M",
+            "price_k": 1500,
+            "theta": 1
+          }
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 10,
-        "color": "gray",
+        "color": "black",
         "dx": 5
       },
       "encoding": {
@@ -108,55 +159,44 @@
           "type": "quantitative"
         },
         "radius": {
-          "field": "radius",
-          "type": "quantitative"
+          "field": "price_k",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "domain": [
+              200,
+              1500
+            ],
+            "range": [
+              80,
+              200
+            ]
+          }
         },
         "text": {
-          "field": "price_level",
+          "field": "price_label",
           "type": "nominal"
         }
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.Year == year_select"
-        },
-        {
-          "fold": [
-            "Sydney",
-            "Melbourne",
-            "Brisbane",
-            "Adelaide",
-            "Perth",
-            "Hobart",
-            "Darwin",
-            "Canberra",
-            "Australia"
-          ],
-          "as": [
-            "City",
-            "House_Price"
-          ]
-        }
-      ],
-      "mark": {
-        "type": "text",
-        "fontSize": 12,
-        "fontWeight": "bold",
-        "color": "black"
-      },
+      "data": {
+        "values": [
+          {"City": "Sydney",   "price_k": 500, "theta": 0.3926990817},
+          {"City": "Melbourne", "price_k": 500, "theta": 1.1},
+          {"City": "Brisbane",  "price_k": 500, "theta": 1.7},
+          {"City": "Adelaide",  "price_k": 500, "theta": 2.4},
+          {"City": "Perth",     "price_k": 500, "theta": 3.1},
+          {"City": "Hobart",    "price_k": 500, "theta": 3.85},
+          {"City": "Darwin",    "price_k": 500, "theta": 4.4},
+          {"City": "Canberra",  "price_k": 500, "theta": 5.1},
+          {"City": "", "price_k": 500, "theta": 5.5}
+        ]},
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "black", "align": "center", "baseline": "middle"},
       "encoding": {
-        "theta": {"field": "City", "type": "nominal"},
-        "radius": {
-          "field": "House_Price", 
-          "type": "quantitative",
-          "scale": {"type": "sqrt", "range": [60, 200]}
-        },
-        "text": {
-          "field": "City",
-          "type": "nominal"
-        }
+        "theta": {"field": "theta", "type": "quantitative"},
+        "radius": {"field": "price_k", "type": "quantitative", "scale": {"type": "sqrt", "domain": [200, 1500], "range": [80, 200]}},
+        "text": {"field": "City", "type": "nominal"}
       }
     }
   ]
