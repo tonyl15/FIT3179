@@ -21,7 +21,7 @@
     {
       "mark": {
         "type": "rule",
-        "color": "black",
+        "color": "#898989",
         "strokeWidth": 2,
         "opacity": 0.7
       },
