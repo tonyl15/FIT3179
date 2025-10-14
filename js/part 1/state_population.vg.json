@@ -6,7 +6,7 @@
   "params": [
     {
       "name": "year_selection",
-      "value": 2021,
+      "value": 2001,
       "bind": {
         "input": "range",
         "min": 2001,

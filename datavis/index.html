@@ -22,7 +22,7 @@
       <div class="pure-g">
         <div class="pure-u-1-3">
           <div class="description description-left">
-            <h3>State Population Overview</h3>
+            <h3>What does the population of Australia look like?</h3>
             <p>
               This visualization shows the population distribution across
               different Australian states and territories. The data provides
@@ -44,10 +44,7 @@
       <!-- Section 2: Economic Factors -->
       <div class="pure-g">
         <div class="pure-u-1-1">
-          <h2>Economic Factors Analysis</h2>
-          <p>
-            Exploring key economic indicators across Australian capital cities
-          </p>
+          <h2>Economic Factors</h2>
         </div>
       </div>
       
@@ -136,13 +133,34 @@
             actions: false,
             renderer: "svg",
             scaleFactor: 1,
-            theme: "fivethirtyeight"
+            theme: "fivethirtyeight",
+            config: {
+                params: [
+                    {
+                        name: "hover",
+                        select: {type: "point", on: "mouseover"}
+                    }
+                ]
+            }
         };
 
         // Section 1: State Population
         var specVis1 = "../js/part 1/state_population.vg.json";
         vegaEmbed('#vis1', specVis1, embedOptions).then(function(result) {
-            // Make responsive
+            // Move controls to bottom
+            const container = document.querySelector('#vis1');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
@@ -152,6 +170,20 @@
         // Section 2: Economic Factors
         var specVis2 = "../js/part 2/house_price.vg.json";
         vegaEmbed('#vis2', specVis2, embedOptions).then(function(result) {
+            // Move controls to bottom
+            const container = document.querySelector('#vis2');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
@@ -160,6 +192,20 @@
 
         var specVis3 = "../js/part 2/inflation.vg.json";
         vegaEmbed('#vis3', specVis3, embedOptions).then(function(result) {
+            // Move controls to bottom
+            const container = document.querySelector('#vis3');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
@@ -168,6 +214,20 @@
 
         var specVis4 = "../js/part 2/min_wage.vg.json";
         vegaEmbed('#vis4', specVis4, embedOptions).then(function(result) {
+            // Move controls to bottom
+            const container = document.querySelector('#vis4');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
@@ -177,6 +237,20 @@
         // Section 3: Comparative Analysis
         var specVis5 = "../js/part 3/comparison.vg.json";
         vegaEmbed('#vis5', specVis5, embedOptions).then(function(result) {
+            // Move controls to bottom
+            const container = document.querySelector('#vis5');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
@@ -185,6 +259,20 @@
 
         var specVis6 = "../js/part 3/slope.vg.json";
         vegaEmbed('#vis6', specVis6, embedOptions).then(function(result) {
+            // Move controls to bottom
+            const container = document.querySelector('#vis6');
+            const controls = container.querySelector('.vega-bindings');
+            if (controls) {
+                controls.style.cssText = `
+                    display: flex !important;
+                    justify-content: center !important;
+                    margin-top: 10px !important;
+                    margin-bottom: 0 !important;
+                    flex-wrap: wrap !important;
+                `;
+                container.appendChild(controls);
+            }
+            
             const view = result.view;
             view.addEventListener('resize', () => {
                 view.runAsync();
