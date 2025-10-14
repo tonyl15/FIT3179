@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": "Median House Price Over Time by Capital City",
   "width": 500,
   "height": 500,
   "data": {

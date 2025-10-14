@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": "Inflation Rate Over Time by Capital City",
   "width": 500,
   "height": 500,
   "resolve": {
@@ -111,8 +110,8 @@
         },
         "tooltip": [
           {"field": "Quarter", "type": "quantitative", "title": "Quarter"},
-          {"field": "Year", "type": "ordinal", "title": "Year"},
           {"field": "Date", "type": "temporal", "title": "Month", "format": "%B"},
+          {"field": "Year", "type": "ordinal", "title": "Year"},
           {"field": "Inflation_Rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"}
         ]
       }
