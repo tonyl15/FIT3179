@@ -30,7 +30,7 @@
           ],
           "mark": "bar",
           "encoding": {
-            "x": {"field": "state", "type": "nominal", "axis": {"title": "State"}},
+            "x": {"field": "state", "type": "nominal", "axis": {"title": null}},
             "y": {
               "field": "proportion",
               "type": "quantitative",
@@ -64,7 +64,7 @@
           ],
           "mark": {"type": "line", "point": true, "strokeWidth": 2},
           "encoding": {
-            "x": {"field": "state", "type": "nominal", "axis": {"title": "State"}},
+            "x": {"field": "state", "type": "nominal", "axis": {"title": null}},
             "y": {
               "field": "affordability_ratio",
               "type": "quantitative",
@@ -97,7 +97,7 @@
             {
               "mark": {"type": "line", "interpolate": "monotone"},
               "encoding": {
-                "x": {"field": "year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
+                "x": {"field": "year", "type": "quantitative", "axis": {"title": null, "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
                 "y": {"field": "rank", "type": "quantitative", "axis": {"title": "Rank (1 = Highest)"}, "scale": {"reverse": true, "domainMin": 1}},
                 "color": {"field": "state", "type": "nominal", "legend": null},
                 "detail": {"field": "state"},
@@ -163,7 +163,7 @@
             {
               "mark": {"type": "line", "interpolate": "monotone"},
               "encoding": {
-                "x": {"field": "Year", "type": "quantitative", "axis": {"title": "Year", "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
+                "x": {"field": "Year", "type": "quantitative", "axis": {"title": null, "values": [2001, 2006, 2011, 2016, 2021], "format": "d"}},
                 "y": {"field": "rank", "type": "quantitative", "axis": {"title": "Rank (1 = Most Years)"}, "scale": {"reverse": true, "domainMin": 1}},
                 "color": {"field": "state", "type": "nominal", "legend": null},
                 "detail": {"field": "state"},

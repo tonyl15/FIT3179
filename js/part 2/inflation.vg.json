@@ -101,9 +101,12 @@
         "color": {
           "field": "Inflation_Rate",
           "type": "quantitative",
-          "title": "Inflation Rate (%)",
+          "title": "Inflation Rate",
           "scale": {
             "domain": [-1.8, 13.1]
+          },
+          "legend": {
+            "labelExpr": "datum.label + '%'"
           }
         },
         "tooltip": [

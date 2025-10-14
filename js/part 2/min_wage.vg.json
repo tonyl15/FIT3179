@@ -23,7 +23,7 @@
               "type": "temporal",
               "scale": {"domain": {"param": "brush"}},
               "axis": {
-                "title": "Year",
+                "title": null,
                 "labelAngle": 0
               }
             },
@@ -41,7 +41,7 @@
               }
             },
             "tooltip": [
-              {"field": "Date", "type": "temporal", "title": "Date", "format": "%Y"},
+              {"field": "Date", "type": "temporal", "title": "Year", "format": "%Y"},
               {"field": "MinWagePerHr", "type": "quantitative", "title": "Minimum Wage ($)"}
             ]
           }
@@ -80,7 +80,7 @@
           "field": "Date",
           "type": "temporal",
           "axis": {
-            "title": "Year",
+            "title": null,
             "labelAngle": 0
           }
         },
@@ -88,7 +88,7 @@
           "field": "MinWagePerHr",
           "type": "quantitative",
           "axis": {
-            "title": "Minimum Wage Per Hr ($)",
+            "title": null,
             "tickCount": 3,
             "grid": false
           }
