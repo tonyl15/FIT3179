@@ -67,14 +67,7 @@
       },
       "transform": [
         {
-          "filter": "split(datum.Date, '-')[0] == 'Dec'"
-        },
-        {
-          "calculate": "parseInt(split(datum.Date, '-')[1]) + 2000",
-          "as": "year"
-        },
-        {
-          "filter": "datum.year == year_selection"
+          "filter": "datum.Year == year_selection"
         },
         {
           "fold": ["Sydney", "Melbourne", "Brisbane", "Adelaide", "Perth", "Hobart", "Darwin", "Canberra"],
@@ -85,7 +78,7 @@
           "as": "state"
         },
         {
-          "lookup": "year",
+          "lookup": "Year",
           "from": {
             "data": {
               "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/Minimum%20wage.csv"
