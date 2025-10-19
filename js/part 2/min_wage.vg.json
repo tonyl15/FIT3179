@@ -60,7 +60,8 @@
       "mark": {
         "type": "text",
         "dx": -100,
-        "dy": -30
+        "dy": -30,
+        "fontSize": 12
       },
       "encoding": {
         "x": {
@@ -81,7 +82,8 @@
         "align": "left",
         "fontWeight": "lighter",
         "dx": -350,
-        "dy": 80
+        "dy": 80,
+        "fontSize": 12
       },
       "encoding": {
         "x": {

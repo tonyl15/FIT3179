@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "title": {"text": "Increase/Decrease in Variables Over Time", "fontSize": 20},
   "data": {
     "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/rate_of_change.csv"
   },
@@ -91,7 +90,7 @@
           "type": "nominal",
           "legend": {
             "title": "Variable",
-            "orient": "left"
+            "orient": "right"
           }
         },
         "tooltip": [
