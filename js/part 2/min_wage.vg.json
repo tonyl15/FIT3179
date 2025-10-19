@@ -9,80 +9,16 @@
       }
     }
   },
-  "vconcat": [
+  "width": 600,
+  "height": 300,
+  "layer": [
     {
-      "width": 600,
-      "height": 250,
-      "layer": [
-        {
-          "mark": "area",
-          "encoding": {
-            "x": {
-              "field": "Date",
-              "type": "temporal",
-              "scale": {"domain": {"param": "brush"}},
-              "axis": {
-                "title": null,
-                "labelAngle": 0,
-                "labelColor": "black",
-                "tickColor": "gray",
-                "domainColor": "gray"
-              }
-            },
-            "y": {
-              "field": "MinWagePerHr",
-              "type": "quantitative",
-              "axis": {
-                "title": "Minimum Wage Per Hr ($)",
-                "labelColor": "black",
-                "tickColor": "gray",
-                "domainColor": "gray"
-              },
-              "scale": {
-                "domain": [
-                  0,
-                  25
-                ]
-              }
-            },
-            "color": {
-              "value": "#FF8C00"
-            },
-            "tooltip": [
-              {"field": "Date", "type": "temporal", "title": "Year", "format": "%Y"},
-              {"field": "MinWagePerHr", "type": "quantitative", "title": "$ Per Hr"}
-            ]
-          }
-        },
-        {
-          "mark": {
-            "type": "text",
-            "dx": -100,
-            "dy": -30
-          },
-          "encoding": {
-            "x": {
-              "datum": {"year": 2023},
-              "type": "temporal",
-              "scale": {"domain": {"param": "brush"}}
-            },
-            "y": {
-              "datum": 20
-            },
-            "text": {
-              "value": "2023 had the greatest increase"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "width": 600,
-      "height": 50,
-      "mark": "area",
-      "params": [
-        {"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}
-      ],
+      "mark": {
+        "type": "line",
+        "point": true,
+        "strokeWidth": 2,
+        "color": "#206fb2"
+      },
       "encoding": {
         "x": {
           "field": "Date",
@@ -99,16 +35,64 @@
           "field": "MinWagePerHr",
           "type": "quantitative",
           "axis": {
-            "title": null,
-            "tickCount": 3,
-            "grid": false,
+            "title": "Minimum Wage Per Hr ($)",
             "labelColor": "black",
             "tickColor": "gray",
             "domainColor": "gray"
+          },
+          "scale": {
+            "domain": [
+              0,
+              25
+            ]
           }
         },
         "color": {
           "value": "#FF8C00"
+        },
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "title": "Year", "format": "%Y"},
+          {"field": "MinWagePerHr", "type": "quantitative", "title": "$ Per Hr"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dx": -100,
+        "dy": -30
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2023},
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 20
+        },
+        "text": {
+          "value": "2023 had the greatest increase"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontWeight": "lighter",
+        "dx": -350,
+        "dy": 80
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2023},
+          "type": "temporal"
+        },
+        "y": {
+          "datum": 20
+        },
+        "text": {
+          "value": "no change from 2008 to 2009"
         }
       }
     }
