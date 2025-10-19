@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "width": 500,
-  "height": 500,
+  "width": 600,
+  "height": 600,
   "data": {
     "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/House%20prices.csv"
   },
@@ -85,7 +85,7 @@
           }
         ],
         "color": {
-          "value": "#3887c0"
+          "value": "#FF8C00"
         }
       }
     },

@@ -11,7 +11,7 @@
   },
   "vconcat": [
     {
-      "width": 500,
+      "width": 600,
       "height": 250,
       "layer": [
         {
@@ -46,7 +46,7 @@
               }
             },
             "color": {
-              "value": "#3887c0"
+              "value": "#FF8C00"
             },
             "tooltip": [
               {"field": "Date", "type": "temporal", "title": "Year", "format": "%Y"},
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "width": 500,
+      "width": 600,
       "height": 50,
       "mark": "area",
       "params": [
@@ -108,7 +108,7 @@
           }
         },
         "color": {
-          "value": "#3887c0"
+          "value": "#FF8C00"
         }
       }
     }

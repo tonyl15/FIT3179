@@ -103,7 +103,7 @@
           "title": "Inflation Rate",
           "scale": {
             "domain": [-1.8, 13.1],
-            "scheme": "blues"
+            "scheme": "oranges"
           },
           "legend": {
             "labelExpr": "datum.label + '%'"

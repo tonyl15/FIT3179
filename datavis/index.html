@@ -69,9 +69,8 @@
             </p>
             <p>
               Hobart has experienced the most significant increase in median house prices over the past decade, rising from around $357,000 in 2014 to approximately $710,000 in 2024.
-
             </p>
-                        <p>
+            <p>
               Use the slider to explore median house prices across Australian
               capital cities over time. 
             </p>
@@ -91,7 +90,7 @@
           <div class="description">
             <h3>2. Inflation Rate</h3>
             <p>
-              During the 1980s, inflation rates across Australia was at its highest, peaking at 12.4% in 1982. In recent years, inflation rates have been relatively low, with occasional spikes. For instance, in 2022, Australia experienced a significant increase in inflation, reaching 7.8%, the highest in nearly three decades.
+              During the 1980s, inflation rates across Australia was at its highest, peaking at 13.1% in 1982 in Sydney. In recent years, inflation rates have been relatively low, with occasional spikes. For instance, in 2022, Australia experienced a significant increase in inflation, reaching 7.8%, the highest in nearly three decades.
             </p>
             <p>
               Use the dropdown menu to explore the annual inflation rates in Australia and all the capital cities over time.
@@ -171,7 +170,14 @@
 
       // Section 1: State Population
       var specVis1 = "../js/part 1/state_population.vg.json";
-      vegaEmbed("#vis1", specVis1, embedOptions)
+      const mapEmbedOptions = {
+        ...embedOptions,
+        config: {
+          ...embedOptions.config,
+          background: "#87CEEB"
+        }
+      };
+      vegaEmbed("#vis1", specVis1, mapEmbedOptions)
         .then(function (result) {
           // Move controls to bottom
           const container = document.querySelector("#vis1");
