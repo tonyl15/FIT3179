@@ -202,7 +202,7 @@
     {
       "vconcat": [
         {
-          "title": {"text": "Rank by Proportion Overseas-born", "fontSize": 18},
+          "title": {"text": "Rank by Diversity", "fontSize": 18},
           "width": 380,
           "height": 210,
           "data": {

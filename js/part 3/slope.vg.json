@@ -1,8 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "title": {"text": "Increase/Decrease in Variables Over Time", "fontSize": 20},
-  "width": 500,
-  "height": 500,
   "data": {
     "url": "https://raw.githubusercontent.com/tonyl15/FIT3179/refs/heads/main/data/rate_of_change.csv"
   },
@@ -17,6 +15,10 @@
       "value": "NSW"
     }
   ],
+  "hconcat": [
+    {
+      "width": 400,
+      "height": 500,
   "layer": [
     {
       "mark": {
@@ -47,14 +49,14 @@
           "as": ["variable", "ratio_value"]
         },
         {
-          "calculate": "datum.variable == 'total_proportion_ratio' ? 'Overseas Population Proportion' : datum.variable == 'house_price_ratio' ? 'House Price' : datum.variable == 'inflation_rate_ratio' ? 'Inflation Rate' : 'Minimum Wage'",
+          "calculate": "datum.variable == 'total_proportion_ratio' ? 'Diversity' : datum.variable == 'house_price_ratio' ? 'House Price' : datum.variable == 'inflation_rate_ratio' ? 'Inflation Rate' : 'Minimum Wage'",
           "as": "variable_label"
         }
       ],
       "mark": {
         "type": "line",
         "point": true,
-        "strokeWidth": 3
+        "strokeWidth": 2
       },
       "encoding": {
         "x": {
@@ -64,28 +66,32 @@
           "axis": {
             "labelAngle": 0,
             "labelColor": "black",
-            "gridColor": "gray",
+            "gridColor": "lightgray",
             "tickColor": "gray",
-            "domainColor": "gray"
+            "domainColor": "gray",
+            "grid": true
           }
         },
         "y": {
           "field": "ratio_value",
           "type": "quantitative",
           "title": "Amount of change between years (x times)",
-          "scale": {"zero": false},
+          "scale": {"domain": {"param": "brush"}, "zero": false},
           "axis": {
             "labelAngle": 0,
             "labelColor": "black",
             "tickColor": "gray",
-            "domainColor": "gray"
+            "domainColor": "gray",
+            "gridColor": "lightgray",
+            "grid": true
           }
         },
         "color": {
           "field": "variable_label",
           "type": "nominal",
           "legend": {
-            "title": "Variable"
+            "title": "Variable",
+            "orient": "left"
           }
         },
         "tooltip": [
@@ -98,7 +104,7 @@
             "field": "ratio_value",
             "type": "quantitative",
             "title": "Amount of Change (x times)",
-            "format": ".3f"
+            "format": ".2f"
           },
           {
             "field": "period",
@@ -108,10 +114,55 @@
         ]
       }
     }
-  ],
-  "resolve": {
-    "scale": {
-      "y": "shared"
+  ]
+    },
+    {
+      "width": 80,
+      "height": 500,
+      "mark": "line",
+      "params": [
+        {"name": "brush", "select": {"type": "interval", "encodings": ["y"]}}
+      ],
+      "transform": [
+        {
+          "filter": "datum.state == state_selection"
+        },
+        {
+          "fold": [
+            "total_proportion_ratio",
+            "house_price_ratio", 
+            "inflation_rate_ratio",
+            "min_wage_ratio"
+          ],
+          "as": ["variable", "ratio_value"]
+        },
+        {
+          "calculate": "datum.variable == 'total_proportion_ratio' ? 'Diversity' : datum.variable == 'house_price_ratio' ? 'House Price' : datum.variable == 'inflation_rate_ratio' ? 'Inflation Rate' : 'Minimum Wage'",
+          "as": "variable_label"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "ratio_value",
+          "type": "quantitative",
+          "scale": {"zero": false},
+          "axis": {
+            "tickCount": 3,
+            "grid": false
+          },
+          "title": null
+        },
+        "color": {
+          "field": "variable_label",
+          "type": "nominal",
+          "legend": null
+        }
+      }
     }
-  }
+  ]
 }
