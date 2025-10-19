@@ -146,7 +146,8 @@
           "mark": {
             "type": "line",
             "point": true,
-            "strokeWidth": 2
+            "strokeWidth": 2,
+            "opacity": 0.6
           },
           "encoding": {
             "x": {
