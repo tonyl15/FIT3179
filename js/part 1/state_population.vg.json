@@ -77,7 +77,7 @@
           "type": "quantitative",
           "scale": {
             "domain": [0, 0.14],
-            "range": ["#f7fbff", "#0868ac"]
+            "scheme": "oranges"
           },
           "legend": {
             "title": "Proportion of Residents",
@@ -104,6 +104,69 @@
             "format": ".2%"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [{"label": "Indian Ocean"}]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "fontWeight": 900,
+        "color": "#125ca4",
+        "x": 60,
+        "y": 80,
+        "align": "center",
+        "baseline": "middle",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "text": {
+          "value": ["I N D I A N", "O C E A N"]
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [{"label": "Coral Sea"}]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "fontWeight": 900,
+        "color": "#125ca4",
+        "x": 630,
+        "y": 80,
+        "align": "center",
+        "baseline": "middle",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "text": {
+          "value": ["C O R A L", "S E A"]
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [{"label": "Pacific Ocean"}]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 16,
+        "fontWeight": 900,
+        "color": "#125ca4",
+        "x": 660,
+        "y": 370,
+        "align": "center",
+        "baseline": "middle",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "text": {
+          "value": ["P A C I F I C", "O C E A N"]
+        }
       }
     }
   ]
