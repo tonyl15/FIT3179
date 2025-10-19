@@ -51,6 +51,7 @@ h3 {
 }
 
 /* Make Pure CSS grid columns align vertically */
+.pure-u-1-1,
 .pure-u-1-2,
 .pure-u-1-3,
 .pure-u-2-3 {
@@ -68,6 +69,7 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 
