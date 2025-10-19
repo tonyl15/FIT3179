@@ -48,7 +48,7 @@ h3 {
 /* Section spacing */
 .pure-g {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Make Pure CSS grid columns align vertically */
@@ -57,7 +57,7 @@ h3 {
 .pure-u-1-3,
 .pure-u-2-3 {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Description boxes */
