@@ -23,7 +23,7 @@
   ],
   "hconcat": [
     {
-      "width": 300,
+      "width": 205,
       "height": 500,
       "resolve": {
         "scale": {
@@ -80,7 +80,7 @@
                 "orient": "left"
               },
               "scale": {
-                "scheme": "tableau10"
+                "scheme": "tableau20"
               }
             },
             "tooltip": [
