@@ -48,7 +48,7 @@
           }
         },
         "color": {
-          "value": "#FF8C00"
+          "value": "#f58518"
         },
         "tooltip": [
           {"field": "Date", "type": "temporal", "title": "Year", "format": "%Y"},

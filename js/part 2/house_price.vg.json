@@ -85,7 +85,19 @@
           }
         ],
         "color": {
-          "value": "#FF8C00"
+          "field": "City",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Sydney", "Melbourne", "Brisbane", "Adelaide",
+              "Perth", "Hobart", "Darwin", "Canberra"
+            ],
+            "range": [
+              "#f58518", "#b279a2", "#72b7b2", "#54a24b",
+              "#ff9da6", "#eeca3b", "#e45756", "#4c78a8"
+            ]
+          },
+          "legend": null
         }
       }
     },
