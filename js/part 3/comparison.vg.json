@@ -161,7 +161,7 @@
               "field": "affordability_ratio",
               "type": "quantitative",
               "axis": {
-                "title": "Years of Minimum Wage to Buy House",
+                "title": "Years of Min Wage to Buy House",
                 "orient": "right",
                 "labelColor": "black",
                     "gridColor": "gray",

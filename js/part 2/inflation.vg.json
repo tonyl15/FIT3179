@@ -110,10 +110,9 @@
           }
         },
         "tooltip": [
+          {"field": "Inflation_Rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"},
           {"field": "Quarter", "type": "quantitative", "title": "Quarter"},
-          {"field": "Date", "type": "temporal", "title": "Month", "format": "%B"},
-          {"field": "Year", "type": "ordinal", "title": "Year"},
-          {"field": "Inflation_Rate", "type": "quantitative", "title": "Inflation Rate (%)", "format": ".1f"}
+          {"field": "Date", "type": "temporal", "title": "Month", "format": "%B"}
         ]
       }
     },
